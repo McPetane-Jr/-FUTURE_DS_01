@@ -7,6 +7,7 @@ title: Superstore Data Analysis (Task 1)
 author: Pride M.J Mnisi
 echo: false
 toc: true
+warning: false
 jupyter: python3
 ---
 
@@ -20,9 +21,9 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("SuperstoreDataSample.csv", encoding="cp1252")
 
 #Useful Variables
-font_title = {'family': 'times new roman', 'color': 'black', 'size': 16, 'weight': 'bold'}
-font_labels = {'family': 'times new roman', 'color': 'black', 'size': 14}
-grid_dict = {'color': 'black', 'linestyle': '--', 'linewidth': 0.5, 'alpha': 0.7}
+font_title = { 'color': 'black', 'size': 16, 'weight': 'bold'}
+font_labels = { 'color': 'black', 'size': 14}
+grid_dict = {'color': 'black', 'linestyle': '--', 'linewidth': 0.5, 'alpha': 0.7, 'which': 'both'}
 ```
 
 ## Data Inspection
@@ -143,7 +144,7 @@ plt.title('Annual Sales', fontdict=font_title)
 plt.xlabel('Year', fontdict=font_labels)
 plt.ylabel('Sales ($)', fontdict=font_labels)
 plt.minorticks_on()
-plt.grid(True, **grid_dict, which='both') 
+plt.grid(True, **grid_dict) 
 plt.xticks(annual_sales.index)
 plt.legend(['Sales', 'Profit'])
 
@@ -195,7 +196,7 @@ plt.title('Monthly Sales', fontdict=font_title)
 plt.xlabel('Month', fontdict=font_labels)
 plt.ylabel('Sales ($)', fontdict=font_labels)
 plt.minorticks_on()
-plt.grid(True, **grid_dict, which='both')
+plt.grid(True, **grid_dict)
 plt.xticks(monthly_sales.index)
 plt.legend(['Sales', 'Profit'])
 
@@ -321,7 +322,7 @@ profit_group.plot(kind='bar')
 plt.title('Regional Profit', fontdict=font_title, horizontalalignment='center')
 plt.xlabel('Regions', fontdict=font_labels)
 plt.ylabel('Profit (USD)', fontdict=font_labels)
-plt.grid(True, **grid_dict, axis='y', which='both')
+plt.grid(True, **grid_dict, axis='y')
 plt.minorticks_on()
 plt.xticks(rotation=0)
 plt.show()
@@ -482,6 +483,8 @@ category_df = pd.DataFrame({
 category_df.plot(kind='bar', xlabel='Categories', ylabel='Amount (USD)', title='Sales and Profit by Category')
 plt.xticks(rotation=0)
 plt.legend(['Sales', 'Profit'])
+plt.grid(True, **grid_dict, axis='y')
+plt.minorticks_on()
 plt.tight_layout()
 plt.show()
 ```
@@ -604,7 +607,7 @@ sales_by_segment.plot(kind='bar')
 plt.title('Sales by Segment', fontdict=font_title, horizontalalignment='center')
 plt.xlabel('Segments', fontdict=font_labels)
 plt.ylabel('Sales (USD)', fontdict=font_labels)
-plt.grid(True, **grid_dict, axis='y', which='both')
+plt.grid(True, **grid_dict, axis='y')
 plt.minorticks_on()
 plt.xticks(rotation=0)
 plt.show()
@@ -677,7 +680,7 @@ profit_by_segment.plot(kind='bar')
 plt.title('Profit by Segment', fontdict=font_title, horizontalalignment='center')
 plt.xlabel('Segments', fontdict=font_labels)
 plt.ylabel('Profit (USD)', fontdict=font_labels)
-plt.grid(True, **grid_dict, axis='y', which='both')
+plt.grid(True, **grid_dict, axis='y')
 plt.minorticks_on()
 plt.xticks(rotation=0)
 plt.show()
@@ -745,7 +748,7 @@ profit_margin_pctg.plot(kind='bar')
 plt.title('Profit Margin by Segment', fontdict=font_title, horizontalalignment='center')
 plt.xlabel('Segments', fontdict=font_labels)
 plt.ylabel('Profit Margin (%)', fontdict=font_labels)
-plt.grid(True, **grid_dict, axis='y', which='both')
+plt.grid(True, **grid_dict, axis='y')
 plt.minorticks_on()
 plt.xticks(rotation=0)
 
