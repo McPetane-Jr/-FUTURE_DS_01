@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pride M.J Mnisi">
+
+<title>Superstore Data Analysis (Task 1)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="superstoreAnalysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="superstoreAnalysis_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="superstoreAnalysis_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="superstoreAnalysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="superstoreAnalysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="superstoreAnalysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="superstoreAnalysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="superstoreAnalysis_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="superstoreAnalysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="superstoreAnalysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="superstoreAnalysis_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Superstore Data Analysis (Task 1)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Pride M.J Mnisi </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr>
+<section id="data-analysis" class="level1">
+<h1>Data Analysis</h1>
+<section id="preview" class="level2">
+<h2 class="anchored" data-anchor-id="preview">Preview</h2>
+<div id="85476c5a" class="cell" data-execution_count="102">
+<div class="cell-output cell-output-display" data-execution_count="102">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Row ID</th>
+<th data-quarto-table-cell-role="th">Order ID</th>
+<th data-quarto-table-cell-role="th">Order Date</th>
+<th data-quarto-table-cell-role="th">Ship Date</th>
+<th data-quarto-table-cell-role="th">Ship Mode</th>
+<th data-quarto-table-cell-role="th">Customer ID</th>
+<th data-quarto-table-cell-role="th">Customer Name</th>
+<th data-quarto-table-cell-role="th">Segment</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Postal Code</th>
+<th data-quarto-table-cell-role="th">Region</th>
+<th data-quarto-table-cell-role="th">Product ID</th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Sub-Category</th>
+<th data-quarto-table-cell-role="th">Product Name</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Quantity</th>
+<th data-quarto-table-cell-role="th">Discount</th>
+<th data-quarto-table-cell-role="th">Profit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>CA-2016-152156</td>
+<td>2016-11-08</td>
+<td>2016-11-11</td>
+<td>Second Class</td>
+<td>CG-12520</td>
+<td>Claire Gute</td>
+<td>Consumer</td>
+<td>United States</td>
+<td>Henderson</td>
+<td>...</td>
+<td>42420.0</td>
+<td>South</td>
+<td>FUR-BO-10001798</td>
+<td>Furniture</td>
+<td>Bookcases</td>
+<td>Bush Somerset Collection Bookcase</td>
+<td>261.9600</td>
+<td>2.0</td>
+<td>0.00</td>
+<td>41.9136</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>CA-2016-138688</td>
+<td>2016-06-12</td>
+<td>2016-06-16</td>
+<td>Second Class</td>
+<td>DV-13045</td>
+<td>Darrin Van Huff</td>
+<td>Corporate</td>
+<td>United States</td>
+<td>Los Angeles</td>
+<td>...</td>
+<td>90036.0</td>
+<td>West</td>
+<td>OFF-LA-10000240</td>
+<td>Office Supplies</td>
+<td>Labels</td>
+<td>Self-Adhesive Address Labels for Typewriters b...</td>
+<td>14.6200</td>
+<td>2.0</td>
+<td>0.00</td>
+<td>6.8714</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>US-2015-108966</td>
+<td>2015-10-11</td>
+<td>2015-10-18</td>
+<td>Standard Class</td>
+<td>SO-20335</td>
+<td>Sean O'Donnell</td>
+<td>Consumer</td>
+<td>United States</td>
+<td>Fort Lauderdale</td>
+<td>...</td>
+<td>33311.0</td>
+<td>South</td>
+<td>FUR-TA-10000577</td>
+<td>Furniture</td>
+<td>Tables</td>
+<td>Bretford CR4500 Series Slim Rectangular Table</td>
+<td>957.5775</td>
+<td>5.0</td>
+<td>0.45</td>
+<td>-383.0310</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>5</td>
+<td>US-2015-108966</td>
+<td>2015-10-11</td>
+<td>2015-10-18</td>
+<td>Standard Class</td>
+<td>SO-20335</td>
+<td>Sean O'Donnell</td>
+<td>Consumer</td>
+<td>United States</td>
+<td>Fort Lauderdale</td>
+<td>...</td>
+<td>33311.0</td>
+<td>South</td>
+<td>OFF-ST-10000760</td>
+<td>Office Supplies</td>
+<td>Storage</td>
+<td>Eldon Fold 'N Roll Cart System</td>
+<td>22.3680</td>
+<td>2.0</td>
+<td>0.20</td>
+<td>2.5164</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>7</td>
+<td>CA-2014-115812</td>
+<td>2014-06-09</td>
+<td>2014-06-14</td>
+<td>Standard Class</td>
+<td>BH-11710</td>
+<td>Brosina Hoffman</td>
+<td>Consumer</td>
+<td>United States</td>
+<td>Los Angeles</td>
+<td>...</td>
+<td>90032.0</td>
+<td>West</td>
+<td>OFF-AR-10002833</td>
+<td>Office Supplies</td>
+<td>Art</td>
+<td>Newell 322</td>
+<td>7.2800</td>
+<td>4.0</td>
+<td>0.00</td>
+<td>1.9656</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 21 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="revenue" class="level2">
+<h2 class="anchored" data-anchor-id="revenue">Revenue</h2>
+<p>This section analyses the sales and profit made throughout the year and aims to give clear insights on the periods at which the business does well and the periods at which it does not.</p>
+<section id="annual-sales" class="level3">
+<h3 class="anchored" data-anchor-id="annual-sales">Annual Sales</h3>
+<div id="f67a8765" class="cell" data-execution_count="103">
+<div class="cell-output cell-output-stdout">
+<pre><code>Annual Sales:
+Order Date
+2014    394984.5790
+2015    374186.0346
+2016    476090.1966
+2017    603193.0423
+Name: Sales, dtype: float64
+Annual Profit:
+Order Date
+2014    40646.9455
+2015    55750.8828
+2016    65006.7657
+2017    81080.4922
+Name: Profit, dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Observations</strong></p>
+<ul>
+<li><p>Anual Sales</p>
+<p>Annual sales show a clear upward trend from 2015 to 2017, indicating strong business growth after a slight dip in 2015.</p>
+<p>The significant increase between 2016 and 2017 suggests that business strategies implemented during this period were highly effective in driving revenue.</p></li>
+<li><p>Profit</p>
+<p>Profit follows a consistent upward trend, increasing each year.</p>
+<p>This indicates that the business is not only generating more revenue but is also maintaining profitability as it scale</p>
+<p>Although, there has been a significant gap between the anual sales measured to be approximately, 345k in 2014 and 522k in 2017, meaning the gap has increased</p></li>
+</ul>
+<p><strong>Insight</strong></p>
+<p>Overall the anual sales grow at a greater rate than anual profit. This could be due to a number of factors, such as increased costs, lower profit margins, or a shift towards lower-margin products. Further analysis is required to identify the exact cause and improve overall profitability.</p>
+</section>
+<section id="monthly-sales" class="level3">
+<h3 class="anchored" data-anchor-id="monthly-sales">Monthly Sales</h3>
+<div id="cdf45592" class="cell" data-execution_count="104">
+<div class="cell-output cell-output-stdout">
+<pre><code>Monthly Sales:
+Month 01: 81338.11
+Month 02: 39355.75
+Month 03: 174336.52
+Month 04: 107640.23
+Month 05: 133014.80
+Month 06: 119218.77
+Month 07: 116307.54
+Month 08: 136272.99
+Month 09: 239506.17
+Month 10: 160324.55
+Month 11: 283324.20
+Month 12: 257814.22
+
+Monthly Profit:
+Month 01: 7404.89
+Month 02: 6412.40
+Month 03: 25586.94
+Month 04: 7671.45
+Month 05: 20486.76
+Month 06: 18327.06
+Month 07: 11805.62
+Month 08: 18911.39
+Month 09: 32772.81
+Month 10: 28118.05
+Month 11: 28877.38
+Month 12: 36110.33</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-12-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Observations</strong></p>
+<ul>
+<li><p>Early-Year Dip</p>
+<p>Both sales and profit are significantly lower in January and February, with February being the lowest-performing month.</p>
+<p>This suggests a post-holiday slowdown, where customer spending typically decreases after the festive season.</p></li>
+<li><p>Mid-Year Recovery</p>
+<p>From March onward, there is a sharp increase in sales, followed by moderate fluctuations between April and August.</p>
+<p>This indicates a period of stabilized business activity, where sales are consistent but not at peak levels.</p></li>
+<li><p>Late-Year Surge</p>
+<p>A strong upward trend is observed from September through December, with:</p>
+<ol type="1">
+<li>A major peak in November</li>
+<li>Sustained high performance in December</li>
+</ol>
+<p>Profit follows a similar pattern, confirming that this is the most valuable period for the business.</p></li>
+</ul>
+<p><strong>Insight</strong></p>
+<p>The business shows clear seasonal behavior:</p>
+<ol type="1">
+<li>Weak performance at the start of the year</li>
+<li>Strong performance toward the end of the year</li>
+</ol>
+<p><strong>Reccomendations</strong></p>
+<p>To improve overall performance, the business should <strong>focus on boosting sales during the slower early months</strong> while fully capitalizing on the high-demand period at the end of the year.</p>
+<hr>
+</section>
+</section>
+<section id="regional-perfomance" class="level2">
+<h2 class="anchored" data-anchor-id="regional-perfomance">Regional Perfomance</h2>
+<section id="overview" class="level3">
+<h3 class="anchored" data-anchor-id="overview">Overview</h3>
+<p>This section analyzes sales performance across 4 regions: West, East, Central, and South using Sales, Profit, and Profit Margin.</p>
+</section>
+<section id="sales-by-region" class="level3">
+<h3 class="anchored" data-anchor-id="sales-by-region">Sales by Region</h3>
+<div id="bc3d3f34" class="cell" data-execution_count="105">
+<div class="cell-output cell-output-stdout">
+<pre><code>Region
+West       595400.5800
+East       523368.9800
+Central    411913.2230
+South      317771.0695
+Name: Sales, dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-13-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Observations</strong></p>
+<ul>
+<li><p>Top Performing Region</p>
+<p>The West region generates the highest sales, followed closely by the East.</p>
+<p>This indicates that these regions are the <strong>primary drivers</strong> of revenue for the business.</p></li>
+<li><p>Mid-Level Performance</p>
+<p>The Central region shows moderate performance, contributing a significant portion but still trailing behind the top regions.</p></li>
+<li><p>Underperforming Region</p>
+<p>The South region records the lowest sales, generating substantially less revenue than all other regions.</p>
+<p>Compared to the West, the South generates approximately 47% less revenue, highlighting a clear performance gap.</p></li>
+</ul>
+<p><strong>Insight</strong></p>
+<p>There is a clear imbalance in regional performance, with revenue concentrated in the West and East.</p>
+<p>This could be due to:</p>
+<ol type="1">
+<li>Differences in market demand</li>
+<li>Unequal resource allocation</li>
+<li>Variations in marketing effectiveness</li>
+<li>Regional economic factors</li>
+</ol>
+<p><strong>Recommendations</strong></p>
+<ol type="1">
+<li><p>Investigate South Region Performance</p>
+<ol type="1">
+<li>Analyze customer behavior and demand in the South</li>
+<li>Evaluate whether the region is under-marketed or under-supplied</li>
+<li>Identify barriers such as pricing, logistics, or product fit</li>
+</ol></li>
+<li><p>Leverage High-Performing Regions</p>
+<p>Study strategies used in the West and East and consider implimenting them in the under performingregions</p></li>
+<li><p>Optimize Resource Allocation</p>
+<p>Consider redistributing marketing and operational efforts Focus on high-growth potential regions while improving weaker ones</p></li>
+</ol>
+</section>
+<section id="profits-by-regions" class="level3">
+<h3 class="anchored" data-anchor-id="profits-by-regions">Profits by Regions</h3>
+<div id="52dcdec4" class="cell" data-execution_count="106">
+<div class="cell-output cell-output-stdout">
+<pre><code>Region
+West       91416.0814
+East       77069.6024
+Central    38877.7150
+South      35121.6874
+Name: Profit, dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Observations</strong></p>
+<ul>
+<li><p>Top Performing Regions</p>
+<p>The West region generates the highest profit, approximately $91k, followed by the East, consistent with the trend observed in sales.</p>
+<p>This indicates that these regions are not only generating high revenue but are also maintaining strong profitability.</p></li>
+<li><p>Central Region Concern</p>
+<p>The Central region generates relatively high sales (approx. 412k) but significantly lower profit (approx. 8.9k).</p>
+<p>This suggests a low return on sales, indicating potential issues such as:</p>
+<ol type="1">
+<li><p>High operational or shipping costs</p></li>
+<li><p>Heavy discounting</p></li>
+<li><p>Lower-margin products</p></li>
+</ol></li>
+<li><p>South Region Efficiency</p>
+<p>Although the South region has the lowest sales (approx. 317k), its profit (approx. 35k) is very close to that of the Central region.</p>
+<p>This indicates that the South is operating with better efficiency, achieving similar profit levels with significantly lower sales.</p></li>
+</ul>
+<p><strong>Insight:</strong></p>
+<p>There is a clear difference between revenue generation and profit efficiency across regions.</p>
+<p>The Central region appears to be underperforming in terms of profitability The South region, despite lower sales, is relatively more efficient</p>
+<p><strong>Recommendations:</strong></p>
+<ol type="1">
+<li><p>Investigate Central Region Costs</p>
+<p>Analyze cost structure (logistics, discounts, operations) Identify areas where profit margins are being reduced Optimize pricing or reduce unnecessary expenses</p></li>
+<li><p>Learn from South Region Efficiency</p>
+<p>Identify what is working well in the South Replicate efficient practices in other regions, especially Central</p></li>
+<li><p>Strengthen High-Profit Regions</p>
+<p>Continue investing in West and East, as they drive both revenue and profit Scale successful strategies from these regions</p></li>
+</ol>
+</section>
+<section id="profit-margins" class="level3">
+<h3 class="anchored" data-anchor-id="profit-margins">Profit margins</h3>
+<div id="9789f172" class="cell" data-execution_count="107">
+<div class="cell-output cell-output-stdout">
+<pre><code>West: 15.35 %
+East: 14.73 %
+Central: 9.44 %
+South: 11.05 %</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-15-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Observations</strong></p>
+<ul>
+<li><p>High-Performing Regions</p>
+<p>The West and East regions have the highest profit margins, indicating strong cost control and efficient operations.</p></li>
+<li><p>Moderate Performance</p>
+<p>The South region shows moderate efficiency, maintaining a reasonable margin despite lower overall sales.</p></li>
+<li><p>Critical Concern: Central Region</p>
+<p>The Central region has the lowest profit margin (9.44%), confirming earlier observations that it is underperforming in terms of profitability.</p>
+<p>This reinforces that:</p>
+<ol type="1">
+<li><p>High sales ≠ high profit</p></li>
+<li><p>The Central region is likely experiencing cost inefficiencies or aggressive discounting</p></li>
+</ol></li>
+</ul>
+<p><strong>Insight</strong></p>
+<p>Profit margin reveals the true performance of each region:</p>
+<p>West/East: Strong revenue and strong efficiency which is why they are best-performing regions</p>
+<p>South: Lower revenue but decent efficiency so, it is fairly stable Central: High revenue but poor efficiency Meaning there is prioritising issues</p>
+<p><strong>Recommendations</strong></p>
+<ol type="1">
+<li><p>Fix Central Region Profitability (High Priority)</p>
+<ol type="1">
+<li>Review products in the Central region with:
+<ol type="1">
+<li>Discount rates &gt; 15%</li>
+<li>Low profit margins</li>
+</ol></li>
+<li>Target: Increase Central region profit margin from 9.44% → at least 12% within 2 quarters</li>
+</ol></li>
+<li><p>Audit pricing strategies in Central:</p>
+<ol type="1">
+<li>Identify products consistently sold at reduced margins</li>
+<li>Implement minimum margin thresholds to prevent loss-leading sales</li>
+</ol></li>
+<li><p>Shift focus toward:</p>
+<ol type="1">
+<li>High-margin products</li>
+<li>Bundled offerings instead of heavy discounts</li>
+<li>Reducig reliance on low-margin, high-volume items</li>
+</ol></li>
+<li><p>Replicate High-Performing Region Strategies</p></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="categories" class="level2">
+<h2 class="anchored" data-anchor-id="categories">Categories</h2>
+<div id="6a485dea" class="cell" data-execution_count="108">
+<div class="cell-output cell-output-stdout">
+<pre><code>Category
+Technology         789020.6400
+Office Supplies    580847.7300
+Furniture          478585.4825
+Name: Sales, dtype: float64
+
+Category Data (Sales &amp; Profit):
+                       Sales       Profit
+Category                                 
+Technology       789020.6400  135977.9624
+Office Supplies  580847.7300   97555.1085
+Furniture        478585.4825    8952.0153</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Observations</strong></p>
+<p>The ratio between the sales vs profit is large due to category being broad.</p>
+<ul>
+<li><p>Top Performing Category: Technology</p>
+<p>Technology generates the highest sales and the highest profit by a large margin.</p>
+<p>This indicates:</p>
+<ol type="1">
+<li>Strong demand</li>
+<li>High-margin products</li>
+<li>Effective pricing strategy</li>
+</ol></li>
+<li><p>Stable Performer: Office Supplies</p>
+<p>Office Supplies shows solid performance in both sales and profit, making it a reliable contributor to overall business revenue.</p></li>
+<li><p>Critical Issue: Furniture Category</p>
+<p>Furniture generates significant sales (~478k) but extremely low profit (approx. 8.9k).</p>
+<p>This a profit margin of roughly:</p>
+<p>~1.9% (very low compared to other categories)</p>
+<p>This suggests:</p>
+<ol type="1">
+<li>High costs (shipping, production, storage)</li>
+<li>Heavy discounting</li>
+<li>Low-margin products</li>
+</ol></li>
+</ul>
+<p><strong>Insight</strong></p>
+<p>Technology contributes the most to business growth and is the profit driver. Office Supplies are the stable backbone pf the business. Lastly Furniture is where the problem area (revenue without value)</p>
+<p><strong>Recommendations</strong></p>
+<ol type="1">
+<li><p>Fix Furniture Profitability (High Priority) Identify top-selling furniture products with low margins</p></li>
+<li><p>Reduce Loss-Making or Low-Margin Products</p></li>
+<li><p>Increase marketing and inventory for Technology products Expand product range in high-performing sub-categories</p></li>
+</ol>
+<hr>
+</section>
+<section id="top-selling-products" class="level2">
+<h2 class="anchored" data-anchor-id="top-selling-products">Top-Selling Products</h2>
+<div id="43a6b589" class="cell" data-execution_count="109">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Product Name
+Lexmark MX611dhe Monochrome Laser Printer                                      16829.901
+High Speed Automatic Electric Letter Opener                                    17030.312
+GBC DocuBind P400 Electric Binding System                                      17965.068
+Hewlett Packard LaserJet 3310 Copier                                           18839.686
+GBC Ibimaster 500 Manual ProClick Binding System                               19024.500
+GBC DocuBind TL300 Electric Binding System                                     19823.479
+HON 5400 Series Task Chairs for Big and Tall                                   21870.576
+Cisco TelePresence System EX90 Videoconferencing Unit                          22638.480
+Fellowes PB500 Electric Punch Plastic Comb Binding Machine with Manual Bind    27453.384
+Canon imageCLASS 2200 Advanced Copier                                          61599.824
+Name: Sales, dtype: float64</code></pre>
+</div>
+</div>
+<p><strong>Key Observations</strong></p>
+<ul>
+<li><p>Technology Dominance</p>
+<p>Many of the top products fall under the Technology category, reinforcing earlier findings that technology is the <strong>primary revenue driver</strong> of the business</p></li>
+<li><p>Furniture Presence</p>
+<p>Products like task chairs appear among top sellers, but earlier analysis showed Furniture has low profit.</p>
+<p>This suggests furniture products may sell well, but are likely low-margin or high-cost</p></li>
+</ul>
+<p><strong>Insight</strong></p>
+<p>High-value products seem to drive revenue A strong Technology segment for profitability</p>
+<p>However, some top-selling products may not be highly profitable, especially in categories like Furniture</p>
+<p><strong>Recommendations</strong></p>
+<ol type="1">
+<li><p>Identify which of these top-selling products: Have low or negative profit margins</p></li>
+<li><p>Prioritize High-Profit Products Focus marketing and promotions on: Products with both high sales AND high profit</p></li>
+<li><p>Optimize supply chain costs</p></li>
+<li><p>Bundle high-margin + high-demand products</p></li>
+<li><p>Invest more in Technology Category since its products are the top sellers</p></li>
+</ol>
+<hr>
+</section>
+<section id="segments" class="level2">
+<h2 class="anchored" data-anchor-id="segments">Segments</h2>
+<section id="sales" class="level3">
+<h3 class="anchored" data-anchor-id="sales">Sales</h3>
+<div id="58181368" class="cell" data-execution_count="110">
+<div class="cell-output cell-output-stdout">
+<pre><code>Segment
+Consumer       936507.1928
+Corporate      554778.0364
+Home Office    357168.6233
+Name: Sales, dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-18-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Observation</strong></p>
+<ul>
+<li><p>Primary Revenue Driver</p>
+<p>The Consumer segment generates the highest sales compaared to the Corprate and Home Office segments.</p>
+<p>This indicates that individual customers are the main source of revenue for the business.</p></li>
+<li><p>Secondary Contributor</p>
+<p>The Corporate segment contributes a substantial portion of sales, but still trails behind Consumer customers.</p>
+<p>This suggests steady demand from businesses, though not at the same scale as individual buyers.</p></li>
+<li><p>Lowest Performing Segment</p>
+<p>The Home Office segment generates the lowest sales.</p>
+<p>This may indicate lower demand or less targeted marketing toward this segment 💡</p></li>
+</ul>
+<p><strong>Insight</strong></p>
+<p>The business relies heavily zon the Consumer segment, making it the core revenue engine.</p>
+<p>However, this also introduces risk such as over-dependence on one segment.</p>
+<p><strong>Recommendations</strong></p>
+<ol type="1">
+<li><p>Continue investing in Consumer Segment (Maintain Growth)</p>
+<ul>
+<li>Marketing campaigns</li>
+<li>Promotions</li>
+<li>Product availability</li>
+</ul>
+<p>Since this is your largest revenue driver — protect and grow it</p></li>
+<li><p>Expand Corporate Segment Opportunities by introducing long-term contracts.</p></li>
+<li><p>Grow Home Office Segment by developing targeted campaigns for:</p>
+<ol type="1">
+<li>Remote workers</li>
+<li>Small/home-based businesses</li>
+<li>Offer bundled office setups or affordable product packages</li>
+</ol></li>
+<li><p>Segment-Specific Strategy</p>
+<ul>
+<li>Avoid a using one approach for every segment. Review the statistics of the perfomance of each segment and strategise accordingly.</li>
+<li>Tailor pricing, promotions, and products for each segment</li>
+</ul></li>
+</ol>
+</section>
+<section id="profit" class="level3">
+<h3 class="anchored" data-anchor-id="profit">Profit</h3>
+<div id="41ad9e55" class="cell" data-execution_count="111">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Profit by Segment:
+Segment
+Consumer       113252.3562
+Corporate       74732.8464
+Home Office     54499.8836
+Name: Profit, dtype: float64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>key Observations</strong></p>
+<ul>
+<li><p>Consistency</p>
+<p>The profits remain consistent with the sale. Although the Home Office segment has the lowest sales, it still generates a notable level of profit (approximately 54k) suggesting potentially higher margins compared to its size</p></li>
+</ul>
+<p><strong>Insight</strong></p>
+<p>When comparing sales vs profit across segments:</p>
+<p>Consumer: - Have a high sales and high profit making them the <strong>core growth engine</strong> Corporate: - Have moderate sales and profit making Corporate the <strong>stable contributor</strong> Home Office: - Have the lowest sales but decent profit making them have <strong>unnoticed potential</strong></p>
+<p>This tells that the business is not just driven by volume (Consumer), but also has efficient smaller segments (Home Office) that can be expanded.</p>
+<p><strong>Recommendations</strong></p>
+<ol type="1">
+<li><p>Continue Scaling Consumer Segment by maintaining strong marketing and product availability</p></li>
+<li><p>Strengthen Corporate Relatiionships by utilising the long term contract metioned previously</p></li>
+<li><p><strong>Expand Home Office Segment:</strong></p>
+<ul>
+<li><p>Target, remote workers, freelancers, small businesses, etc and capitalize on them</p></li>
+<li><p>Offer affordable starter kits to help attract clients of the Home Office Segment, which has the highest potential</p></li>
+<li><p>Increase sales while maintaining current efficiency</p></li>
+<li><p>Since technology has the highest sales, the business should consider investing more of it into this segment</p></li>
+</ul></li>
+<li><p>Segment Profitability Strategy -Analyze profit margins per segment; which segment converts revenue into profit most efficiently</p></li>
+</ol>
+</section>
+<section id="profit-margin" class="level3">
+<h3 class="anchored" data-anchor-id="profit-margin">Profit Margin</h3>
+<div id="34dc8c16" class="cell" data-execution_count="112">
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales by Segment:
+Segment
+Consumer       936507.1928
+Corporate      554778.0364
+Home Office    357168.6233
+Name: Sales, dtype: float64
+
+Profit by Segment:
+Segment
+Consumer       113252.3562
+Corporate       74732.8464
+Home Office     54499.8836
+Name: Profit, dtype: float64
+
+Profit Margin (% of Sales):
+Consumer: 12.09%
+Corporate: 13.47%
+Home Office: 15.26%</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="superstoreAnalysis_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="kpis-used" class="level2">
+<h2 class="anchored" data-anchor-id="kpis-used">KPIs used</h2>
+<p>The following key performance indicators (KPIs) were used to evaluate business performance:</p>
+<p><strong>Total Sales</strong></p>
+<p>Measures overall revenue generated across different dimensions (time, region, category, and segment).</p>
+<p><strong>Total Profit</strong></p>
+<p>Indicates the net earnings after costs, used to assess overall profitability. Profit Margin (%)</p>
+<p>Calculated as (Profit / Sales × 100), this metric evaluates how efficiently the business converts revenue into profit.</p>
+<p><strong>Sales Growth (Annual Trend)</strong></p>
+<p>Tracks changes in revenue over time to identify business growth patterns. Seasonal Trends (Monthly Sales &amp; Profit) Identifies fluctuations in performance throughout the year.</p>
+<p><strong>Regional Performance</strong></p>
+<p>Compares sales and profit across regions to detect geographical strengths and weaknesses. Category &amp; Product Performance Evaluates which product categories and individual products drive revenue and profit.</p>
+<p><strong>Customer Segment Performance</strong></p>
+<p>Analyzes contribution from different customer groups (Consumer, Corporate, Home Office). Compared the rates between the sales an profits of each segment by calculating: (each segment profit / each segment sale) and ploting that</p>
+<hr>
+</section>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways"><strong>Key Takeaways</strong></h2>
+<p>The analysis reveals that the business is experiencing <strong>steady growth in both sales and profit</strong>, although profit is increasing at a slower rate, indicating a <strong>decline in efficiency</strong>. There is a clear <strong>seasonal pattern</strong>, with performance peaking toward the end of the year and dipping in the early months. Regionally, <strong>the West and East drive the majority of revenue</strong>, while the <strong>Central region underperforms in profitability</strong>, highlighting inefficiencies. From a product perspective, <strong>Technology is the strongest category</strong>, whereas <strong>Furniture generates high sales but very low profit</strong>, making it a key concern. The <strong>Consumer segment is the primary revenue and profit driver</strong>, though opportunities exist to expand the <strong>Home Office segment</strong> and leverage the <strong>efficiency observed in the South region</strong>. Overall, the business should <strong>focus on improving low-margin areas while scaling its high-performing segments and categories</strong>.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
