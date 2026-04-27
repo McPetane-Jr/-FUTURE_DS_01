@@ -1,9 +1,0 @@
-------------------------------------------------------------------------
-
-title: Quarto Example author: Mcpet
-
-------------------------------------------------------------------------
-
-# Quarto Example
-
-This is an example of a Quarto document. You can write text, include code, and create visualizations all in one place. Below is an example of a Python code cell that generates a simple plot.
