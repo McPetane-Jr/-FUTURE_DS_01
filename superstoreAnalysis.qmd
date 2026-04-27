@@ -111,9 +111,7 @@ df.to_csv("output.csv", index=False)
 ## Preview
 
 ```{python}
-import itables
-
-itables.show(df.head(50))
+df.head(50)
 ```
 
 ## Revenue
