@@ -111,7 +111,7 @@ df.to_csv("output.csv", index=False)
 ## Preview
 
 ```{python}
-df.head(50)
+df.head()
 ```
 
 ## Revenue
